@@ -8,15 +8,15 @@ import torchvision.transforms as T
 import torchvision.transforms.functional as TF
 
 class DenoisingDataset(Dataset):
-    def init(self, image_dir, patch_size = 256, noise_sigma = 25, augment = True, grayscale = True):
-        super().__init__()
+    def __init__(self, image_dir, patch_size = 256, noise_sigma = 25, augment = True, grayscale = True):
+        super(DenoisingDataset, self).__init__()
         self.image_dir = image_dir
         self.patch_size = patch_size
         self.noise_sigma = noise_sigma
         self.augment = augment
         self.grayscale = grayscale
-        exts = ('.png', '.jpg', '.jpeg', '.bmp', '.tif', '.tiff')
 
+        exts = ('.png', '.jpg', '.jpeg', '.bmp', '.tif', '.tiff')
         self.image_paths = [
             os.path.join(image_dir, f)
             for f in sorted(os.listdir(image_dir))

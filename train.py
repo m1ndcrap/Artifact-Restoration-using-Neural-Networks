@@ -149,7 +149,7 @@ def main():
                 'scheduler': scheduler.state_dict(),
                 'best_psnr': best_psnr,
             }, os.path.join(args.output_dir, 'best_model.pth'))
-            print(f"  ✓ New best model saved (PSNR: {best_psnr:.2f} dB)")
+            print(f"* New best model saved (PSNR: {best_psnr:.2f} dB) *")
 
         # Save latest checkpoint every 10 epochs
         if epoch % 10 == 0:
@@ -165,7 +165,7 @@ def main():
     with open(os.path.join(args.output_dir, 'history.json'), 'w') as f:
         json.dump(history, f, indent = 2)
 
-    print(f"\nTraining complete. Best PSNR: {best_psnr:.2f} dB")
+    print(f"\nTraining complete! Best PSNR: {best_psnr:.2f} dB")
 
 if __name__ == '__main__':
     main()

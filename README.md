@@ -7,6 +7,9 @@
 > is being worked on.
 > 
 
+# Google Colab
+You can run the project easily via [Google Colab.](https://colab.research.google.com/drive/1yqeMhJ31ITy2BF0HT7OHinNFfQFOTX-f?usp=sharing) Just make sure you follow the instructions at the top of the notebook to set the proper hardware and add your GitHub token (necessary to clone this private repository).
+
 # Setup
 1. Open CMD within the project root and run:
 ```bash

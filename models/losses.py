@@ -21,7 +21,7 @@ class PerceptualLoss(nn.Module):
           
             self.available = True
         except ImportError:
-            print("torchvision not found — PerceptualLoss will fall back to MSE.")
+            print("torchvision not found; PerceptualLoss will fall back to MSE.")
             self.available = False
 
     def forward(self, pred, target):

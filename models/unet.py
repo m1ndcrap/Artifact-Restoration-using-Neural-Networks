@@ -62,7 +62,7 @@ class UNet(nn.Module):
         self.dec2 = UpBlock(features[2], features[1])
         self.dec1 = UpBlock(features[1], features[0])
 
-        # Final 1x1 conv — predicts residual noise
+        # Final 1x1 conv
         self.final = nn.Conv2d(features[0], out_channels, kernel_size=1)
 
     def forward(self, x):

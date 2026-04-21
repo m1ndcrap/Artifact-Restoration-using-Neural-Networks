@@ -46,17 +46,15 @@ def random_rect_mask(height, width, min_rects = 1, max_rects = 4):
 
 
 def combined_mask(height, width):
-    mask = Image.new("L", (width, height), 255)
-    draw = ImageDraw.Draw(mask)
+    # Start with brush strokes as the base
+    mask = random_brush_mask(height, width)
 
-    # Brush strokes
-    brush_mask = random_brush_mask(height, width)
-    mask.paste(brush_mask, mask=brush_mask)
-
-    # Add a rectangle sometimes
+    # Add rectangles on top sometimes
     if random.random() > 0.5:
-        rect_mask = random_rect_mask(height, width, min_rects=1, max_rects=2)
-        mask.paste(rect_mask, mask=rect_mask)
+        rect_mask = random_rect_mask(height, width, min_rects = 1, max_rects = 2)
+        # Combine: pixel is hole (0) if EITHER mask says hole
+        mask_arr = np.minimum(np.array(mask), np.array(rect_mask))
+        mask = Image.fromarray(mask_arr.astype(np.uint8))
 
     return mask
 

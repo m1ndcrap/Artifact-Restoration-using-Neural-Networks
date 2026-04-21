@@ -7,7 +7,7 @@ import torch
 from torch.utils.data import Dataset, DataLoader
 import torchvision.transforms.functional as TF
 
-from mask_generator import combined_mask, mask_to_tensor, apply_mask
+from data.mask_generator import combined_mask, mask_to_tensor, apply_mask
 
 class InpaintingDataset(Dataset):
     def __init__(self, image_dir, patch_size = 256, augment = True, grayscale = True):

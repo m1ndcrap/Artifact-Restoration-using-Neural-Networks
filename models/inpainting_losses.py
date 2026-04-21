@@ -11,6 +11,9 @@ class InpaintingLoss(nn.Module):
             self.vgg = VGGFeatureExtractor()
 
     def forward(self, output, target, mask):
+        if self.use_perceptual:
+            self.vgg = self.vgg.to(output.device)
+
         # L1 on valid pixels
         l1_valid = F.l1_loss(mask * output, mask * target)
 
